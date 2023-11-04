@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0; /* Light Gray */
+      margin: 0;
+      padding: 0;
+    }
+
+    .magic {
+      font-size: 24px;
+      border-radius: 15px;
+      padding: 10px 20px;
+      text-align: center;
+      background-color: #007acc; /* Bright Blue */
+      color: #fff; /* White */
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .magic:hover {
+      background-color: #005faa; /* Slightly Darker Blue on Hover */
+    }
+
+    .game-container {
+      background-color: #fff; /* White */
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+
+    h1 {
+      color: #333; /* Dark Gray */
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .score {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Rock Paper Scissors Game</h1>
+
+    <script>
+      var userScore = 0;
+      var computerScore = 0;
+
+      function playRound(userChoice) {
+        var computerChoice = Math.floor(Math.random() * 3) + 1;
+        var result = '';
+
+        switch (userChoice) {
+          case 1:
+            if (computerChoice === 1) result = 'It\'s a draw!';
+            else if (computerChoice === 2) {
+              result = 'You lose! Paper covers Rock.';
+              computerScore++;
+            } else {
+              result = 'You win! Rock blunts Scissors.';
+              userScore++;
+            }
+            break;
+          case 2:
+            if (computerChoice === 2) result = 'It\'s a draw!';
+            else if (computerChoice === 1) {
+              result = 'You win! Paper covers Rock.';
+              userScore++;
+            } else {
+              result = 'You lose! Scissors cut Paper.';
+              computerScore++;
+            }
+            break;
+          case 3:
+            if (computerChoice === 3) result = 'It\'s a draw!';
+            else if (computerChoice === 1) {
+              result = 'You lose! Rock blunts Scissors.';
+              computerScore++;
+            } else {
+              result = 'You win! Scissors cut Paper.';
+              userScore++;
+            }
+            break;
+          default:
+            result = 'Invalid choice!';
+        }
+
+        alert(result);
+        displayScore();
+      }
+
+      function displayScore() {
+        var scoreText = 'Your Score: ' + userScore + '<br>Computer Score: ' + computerScore;
+        document.getElementById('score').innerHTML = scoreText;
+      }
+    </script>
+
+    <p>Select your move:</p>
+    <button onclick="playRound(1)">Rock</button>
+    <button onclick="playRound(2)">Paper</button>
+    <button onclick="playRound(3)">Scissors</button>
+
+    <div class="score" id="score">Your Score: 0<br>Computer Score: 0</div>
+
+    <a href="index.html" target="A_Saiyed" class="magic">EXIT GAME</a>
+  </div>
+</body>
+</html>
